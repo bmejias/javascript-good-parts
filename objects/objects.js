@@ -60,13 +60,68 @@ console.log("after: " + stooge['middle-name']);
 console.log("before: " + stooge.nickname);
 stooge.nickname = "Curly";
 console.log("after: " + stooge.nickname);
-var value = flight.equipment && flight.equipment.model
+var value = flight.equipment && flight.equipment.model;
 console.log("before: " + value);
 flight.equipment = {
   model: 'Boeing 777'
 };
-value = flight.equipment && flight.equipment.model
+value = flight.equipment && flight.equipment.model;
 console.log("after: " + value);
 console.log("before: " + flight.status);
-flight.status = 'overdue'
+flight.status = 'overdue';
 console.log("after: " + flight.status);
+
+// Reference
+
+console.log('------------------');
+stooge.nickname = "";
+console.log("Emptying nickname value: " + stooge.nickname);
+var x = stooge;
+x.nickname = "Curly";
+var nick = stooge.nickname;
+console.log("Reassigned through var x: " + stooge.nickname);
+
+console.log('------------------');
+var a = {}, b = {}, c = {};
+a.foo = "bar";
+b.bla = "bla";
+console.log("all different");
+console.log("b.foo: " + b.foo);
+console.log("c.bla: " + c.bla);
+
+console.log('------------------');
+console.log("all equals");
+a = b = c = {};
+a.foo = "bar";
+b.bla = "bla";
+console.log("b.foo: " + b.foo);
+console.log("c.bla: " + c.bla);
+
+// Prototype
+
+if (typeof Object.create !== 'function') {
+  Object.create = function (o) {
+    var F = function () {};
+    F.prototype = o;
+    return new F();
+  };
+}
+var another_stooge = Object.create(stooge);
+another_stooge['first-name'] = "Harry";
+another_stooge['middle-name'] = "Moses";
+another_stooge.nickname = "Moe";
+
+console.log('------------------');
+console.log("Value of the other stooge");
+console.log("first-name: " + another_stooge['first-name']);
+console.log("middle-name: " + another_stooge['middle-name']);
+console.log("nickname: " + another_stooge.nickname);
+
+console.log('------------------');
+stooge.profession = 'actor';
+console.log("Profession delegated");
+console.log(stooge.nickname + ": " + stooge.profession);
+console.log(another_stooge.nickname + ": " + another_stooge.profession);
+console.log("Profession override");
+another_stooge.profession = "best actor";
+console.log(another_stooge.nickname + ": " + another_stooge.profession);
