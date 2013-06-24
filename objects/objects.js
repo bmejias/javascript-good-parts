@@ -167,3 +167,12 @@ var properties = [
 for (i = 0; i < properties.length; i += 1) {
   console.log(properties[i] + ':' + another_stooge[properties[i]]);
 }
+
+// Deleting
+
+console.log('------------------');
+console.log("Deleting a property to expose prototype's value");
+console.log("Protype's value: " + stooge.nickname);
+console.log("Another stooge before delete: " + another_stooge.nickname);
+delete another_stooge.nickname;
+console.log("Another stooge after delete: " + another_stooge.nickname);
