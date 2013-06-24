@@ -125,3 +125,45 @@ console.log(another_stooge.nickname + ": " + another_stooge.profession);
 console.log("Profession override");
 another_stooge.profession = "best actor";
 console.log(another_stooge.nickname + ": " + another_stooge.profession);
+
+// Reflection
+
+console.log('------------------');
+console.log("Getting types of object attributes");
+console.log(typeof flight.number);
+console.log(typeof flight.status);
+console.log(typeof flight.arrival);
+console.log(typeof flight.manifest);
+console.log(typeof flight.toString);
+console.log(typeof flight.constructor);
+console.log(typeof flight);
+
+console.log("Checking if the object hasOwnProperty");
+console.log(flight.hasOwnProperty('number'));
+console.log(flight.hasOwnProperty('constructor'));
+
+// Enumeration
+
+console.log('------------------');
+console.log("Enumerating another stooge's properties");
+var name;
+for (name in another_stooge) {
+  if (typeof another_stooge[name] !== 'function') {
+    console.log(name + ': ' + another_stooge[name]);
+    // Use [] instead of . becuase 'name' isn't a property of the object
+    // console.log(name + ': ' + another_stooge.name);
+  }
+}
+
+console.log('------------------');
+console.log("Order guaranteed by enumerating using an array");
+var i;
+var properties = [
+  'first-name',
+  'middle-name',
+  'last-name',
+  'profession'
+  ];
+for (i = 0; i < properties.length; i += 1) {
+  console.log(properties[i] + ':' + another_stooge[properties[i]]);
+}
