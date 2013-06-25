@@ -84,3 +84,24 @@ console.log("-------------");
 console.log("Testing objects created with constructor");
 var myQuo = new Quo("confused");
 console.log(myQuo.get_status());
+
+console.log("-------------");
+console.log("Using the apply invocation pattern");
+var array = [3, 4];
+var sum = add.apply(null, array);
+console.log("Sum after apply: " + sum);
+
+var statusObject = {
+  status: 'A-OK'
+};
+
+// Reusing code without using inheritance/delegation
+
+var status = Quo.prototype.get_status.apply(statusObject);
+console.log("retrieving status with apply: " + status);
+
+var badStatusObject = {
+  s: 'foo'
+};
+var s = Quo.prototype.get_status.apply(badStatusObject);
+console.log("It won't work if 'status' is not a property: " + s);
