@@ -149,5 +149,3 @@ var try_it = function () {
 };
 
 try_it();
-
-// TODO Carry on with Argument types, on page 33
