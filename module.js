@@ -1,3 +1,10 @@
+// From the book:
+//
+// A module is a function or object that presents an interface but that hides
+// its state and implementation. By using functions to produce modules, we can
+// almost completely eliminate our use of global variables, thereby mitigating
+// one of JavaScrtipt's worst features.
+
 Function.prototype.method = function (name, func) {
     this.prototype[name] = func;
     return this;
@@ -21,4 +28,4 @@ String.method('deentityify', function() {
     };
 }());
 
-console.log('&lt;&quot;&gt;'.deentityify());
+console.log('&lt;&quot;test&quot;&gt;'.deentityify());
