@@ -10,6 +10,7 @@ Function.prototype.method = function (name, func) {
     return this;
 };
 
+
 String.method('deentityify', function() {
     // The entity table. It maps entity names to characters
     var entity = {
