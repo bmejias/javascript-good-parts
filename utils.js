@@ -3,6 +3,7 @@ Function.prototype.method = function (name, func) {
     return this;
 };
 
+// This function is given as "create" in the book
 if (typeof Object.clone !== 'function') {
   Object.clone = function (o) {
     var F = function () {};

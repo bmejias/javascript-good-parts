@@ -98,15 +98,15 @@ console.log("b.foo: " + b.foo);
 console.log("c.bla: " + c.bla);
 
 // Prototype
-
-if (typeof Object.create !== 'function') {
-  Object.create = function (o) {
+// To me, 'clone' is a better name for the 'create' function from the book.
+if (typeof Object.clone !== 'function') {
+  Object.clone = function (o) {
     var F = function () {};
     F.prototype = o;
     return new F();
   };
 }
-var another_stooge = Object.create(stooge);
+var another_stooge = Object.clone(stooge);
 another_stooge['first-name'] = "Harry";
 another_stooge['middle-name'] = "Moses";
 another_stooge.nickname = "Moe";
